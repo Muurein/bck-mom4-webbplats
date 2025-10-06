@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1em;
+  line-height: .7em;
+}
+
+header {
+  color: #fff;
+  background-color: #6a5acd;
+  height: 80px;
+}
+
+ul {
+  gap: 2em;
+  list-style-type: none;
+  display: flex;
+}
+
+li {
+  margin-top: 35px;
+  font-weight: 600;
+}
+
+.current-page {
+  background-color: #1c1546;
+  border-radius: 20px;
+  margin-top: 22px;
+  padding: .8em;
+}
+
+h1 {
+  align-items: center;
+  max-width: 70%;
+  margin: 1.5em auto 1em;
+}
+
+main {
+  border: 1px solid #000;
+  border-left: none;
+  border-right: none;
+  align-items: center;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.3em;
+}
+
+main p {
+  margin-bottom: 1em;
+}
+
+h2 {
+  text-align: center;
+  background-color: #fffacd;
+  margin-bottom: -1.3em;
+  padding: 1em;
+}
+
+.sign-in {
+  text-align: center;
+  background-color: #fffacd;
+  padding: 1em;
+}
+
+.sign-in div {
+  margin-top: 1.5em;
+}
+
+.sign-in input {
+  margin-top: .8em;
+}
+/*# sourceMappingURL=html.8c1c22dc.css.map */

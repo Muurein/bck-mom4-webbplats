@@ -1,0 +1,82 @@
+@use "base";
+
+* {
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    line-height: 0.7em;
+}
+
+header {
+    background-color: base.$color-primary;
+    color: white;
+    height: 80px;
+}
+
+
+ul {
+    list-style-type: none;
+    display: flex;
+    gap: 2em;
+}
+
+li {
+    margin-top: 35px;
+    font-weight: 600;
+}
+
+.current-page {
+    background-color: base.$color-primary-darker;
+    padding: 0.8em;
+    margin-top: 22px;
+    border-radius: 20px;
+}
+
+h1 {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    max-width: 70%;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main {
+    max-width: 70%;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    border-left: none;
+    border-right: none;
+    padding: 1.3em;
+}
+
+main p {
+    margin-bottom: 1em;
+}
+
+h2 {
+    background-color: base.$color-secondary;
+    padding: 1em;
+    margin-bottom: -1.3em;
+    text-align: center;
+}
+
+.sign-in {
+    background-color: base.$color-secondary;
+    padding: 1em;
+    text-align: center;
+}
+
+.sign-in div {
+    margin-top: 1.5em;
+}
+
+.sign-in input {
+    margin-top: 0.8em;
+}
+
