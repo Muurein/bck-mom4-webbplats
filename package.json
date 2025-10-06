@@ -1,0 +1,18 @@
+{
+  "name": "bck-mom4-webbplats",
+  "version": "1.0.0",
+  "license": "ISC",
+  "author": "Amanda Thim",
+  "type": "commonjs",
+  "source": "src/html/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.10",
+    "parcel": "^2.16.0",
+    "sass": "^1.93.2",
+    "scss": "^0.2.4"
+  }
+}
