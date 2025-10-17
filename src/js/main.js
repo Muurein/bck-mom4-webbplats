@@ -58,6 +58,37 @@ async function newUser(username, password, firstName, lastName, email) {
 //ska ta användaren till min profil
 function signIn(event) {
     event.preventDefault();
+
+    fetch("/api/signin", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        bosy: JSON.stringify({
+            username: "user",
+            password: "password"
+        })
+    })
+    .then(response => {
+        if(!response.ok) {
+            throw new Error("Användarnamnet eller lösenordet är fel") //passar det här?
+        }
+        return response.json();
+    })
+    .then(data => {
+        localStorage.setItem("token", data.token);
+        //tar användaren till min profil
+        window.location.href = "profile.html";
+
+    })
+    .catch(error => {
+        console.error("Inloggningen misslyckades: ", error.message);
+    });
+}
+
+//skapa en funktion för att se till att infon på min profil är dynamisk
+function renderProfile(username, password, firstName, lastName, email) {
+
 }
 
 

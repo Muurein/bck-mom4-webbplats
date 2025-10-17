@@ -10,7 +10,7 @@ body {
 
 header {
   color: #fff;
-  background-color: #6a5acd;
+  background-color: #5a6bcd;
   height: 80px;
 }
 
@@ -26,10 +26,19 @@ li {
 }
 
 .current-page {
-  background-color: #1c1546;
+  background-color: #212c6d;
   border-radius: 20px;
   margin-top: 22px;
   padding: .8em;
+}
+
+ul a {
+  color: #fff;
+  text-decoration: none;
+}
+
+ul a:hover {
+  text-decoration: underline;
 }
 
 h1 {

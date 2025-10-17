@@ -1,66 +1,39 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+     <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <title>Startsida</title>
 
-    <link rel="stylesheet" href="/html.8c1c22dc.css">
+    <link rel="stylesheet" href="../css/main.scss">
     <!-- <script src="../js/main.js" type="module"></script> -->
 </head>
-
+</head>
 <body>
 
     <header>
         <nav>
             <ul>
                 <li class="current-page">Startsida</li>
-                <li><a href="/profile.html">Min profil</a></li>
+                <li>Min profil</li>
             </ul>
         </nav>
     </header>
 
-    <h1>Valfakta är bra fakta</h1>
+    <h1>Rubrik</h1>
 
     <main>
         
-        <div class="flexbox">
-            <p>
-                Visste du att blåvalen kan bli upp till 30 meter lång och väga mellan 150 poch 200 ton?
-            </p>
 
-            <p>Logga in på din profil för att läsa mer!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-            <img src="/whale.51c185b4.png">
-        </div>
+        <p>Logga in på din profil för att läsa mer!</p>
         
-        
-        <div class="sign-in">
-            <h2>Logga in</h2>
-            <form action="/signin">
-                <!--användarnamn-->
-                <div>
-                    <label for="username">Användarnamn:</label>
-                    <br>
-                    <input type="text" id="username" name="username">
-                </div>
 
-                <!--lösenord-->
-                <div>
-                    <label for="password">Lösenord:</label>
-                    <br>
-                    <input type="text" id="password" name="password">
-                </div>
-
-                <!--logga in-knapp-->
-                <div>
-                    <input class="sign-in" type="submit">
-                </div>
-            </form>
-        </div>
-
-        <div class="sign-in">
+        <div class="sign-up">
             <h2>Skapa konto</h2>
-            <form>
+            <form action="/register" method="POST">
                 <!--användarnamn-->
                 <div>
                     <label for="username">Användarnamn:</label>
@@ -84,14 +57,14 @@
 
                 <!--efternamn-->
                 <div>
-                    <label for="lastName">Efternamn:</label>
+                    <label for="lastName">Förnamn:</label>
                     <br>
                     <input type="text" id="lastName" name="lastName">
                 </div>
 
                 <!--email-->
                 <div>
-                    <label for="email">E-post:</label>
+                    <label for="email">Förnamn:</label>
                     <br>
                     <input type="text" id="email" name="email">
                 </div>
@@ -102,12 +75,6 @@
                 </div>
             </form>
         </div>
-
     </main>
-
-    <footer>
-        <p>Amanda Thim - amth2302</p>
-        <p>Moment 4 - Autentisering och säkerhet</p>
-    </footer>
-
-<script src="/html.dad4b666.js"></script></body></html>
+</body>
+</html>

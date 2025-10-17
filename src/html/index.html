@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <title>Startsida</title>
 
     <link rel="stylesheet" href="../css/main.scss">
@@ -16,24 +16,29 @@
         <nav>
             <ul>
                 <li class="current-page">Startsida</li>
-                <li>Min profil</li>
+                <li><a href="profile.html">Min profil</a></li>
             </ul>
         </nav>
     </header>
 
-    <h1>Rubrik</h1>
+    <h1>Valfakta är bra fakta</h1>
 
     <main>
         
+        <div class="flexbox">
+            <p>
+                Visste du att blåvalen kan bli upp till 30 meter lång och väga mellan 150 poch 200 ton?
+            </p>
 
-        <p>info</p>
+            <p>Logga in på din profil för att läsa mer!</p>
 
-        <p>Logga in på din profil för att läsa mer!</p>
+            <img src="../images/whale.png">
+        </div>
         
         
         <div class="sign-in">
             <h2>Logga in</h2>
-            <form>
+            <form action="/signin">
                 <!--användarnamn-->
                 <div>
                     <label for="username">Användarnamn:</label>
@@ -81,14 +86,14 @@
 
                 <!--efternamn-->
                 <div>
-                    <label for="lastName">Förnamn:</label>
+                    <label for="lastName">Efternamn:</label>
                     <br>
                     <input type="text" id="lastName" name="lastName">
                 </div>
 
                 <!--email-->
                 <div>
-                    <label for="email">Förnamn:</label>
+                    <label for="email">E-post:</label>
                     <br>
                     <input type="text" id="email" name="email">
                 </div>
@@ -99,6 +104,12 @@
                 </div>
             </form>
         </div>
+
     </main>
+
+    <footer>
+        <p>Amanda Thim - amth2302</p>
+        <p>Moment 4 - Autentisering och säkerhet</p>
+    </footer>
 </body>
 </html>

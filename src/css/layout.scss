@@ -35,6 +35,15 @@ li {
     border-radius: 20px;
 }
 
+ul a {
+    color: white;
+    text-decoration: none;
+}
+
+ul a:hover {
+text-decoration: underline;
+}
+
 h1 {
     margin-top: 1.5em;
     margin-bottom: 1em;
