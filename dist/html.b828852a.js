@@ -764,12 +764,9 @@ async function newUser(username, password, firstName, lastName, email) {
             },
             body: JSON.stringify(user)
         });
-        Console.log("USER:", user);
-        console.log("response status i newUser:", response.status);
         const data = await response.json();
         if (response.ok) {
             alert("Kontot har skapats. Nu kan du logga in!");
-            console.log(data);
             window.location.href = "index.html";
         }
     } catch (error) {
@@ -793,10 +790,7 @@ function signIn(event) {
             password: password
         })
     }).then((response)=>{
-        if (!response.ok) {
-            console.log("Anv\xe4ndarnamnet eller l\xf6senordet \xe4r fel");
-            document.getElementById("wrongSignIn").textContent = "Anv\xe4ndarnamnet eller l\xf6senordet \xe4r fel";
-        }
+        if (!response.ok) document.getElementById("wrongSignIn").textContent = "Anv\xe4ndarnamnet eller l\xf6senordet \xe4r fel";
         return response.json();
     }).then((data)=>{
         localStorage.setItem("token", data.token);

@@ -61,15 +61,11 @@ async function newUser(username, password, firstName, lastName, email) {
             body: JSON.stringify(user),
             
         });
-            Console.log("USER:", user);
-            console.log("response status i newUser:", response.status);
-
 
         const data = await response.json();
 
         if(response.ok) {
             alert("Kontot har skapats. Nu kan du logga in!");
-            console.log(data);
             window.location.href = "index.html";
         } 
     } catch (error) {
@@ -103,7 +99,6 @@ function signIn(event) {
     })
     .then(response => {
         if(!response.ok) {
-            console.log("Användarnamnet eller lösenordet är fel");
             document.getElementById("wrongSignIn").textContent =  "Användarnamnet eller lösenordet är fel";
         }
         return response.json();

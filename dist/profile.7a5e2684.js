@@ -717,6 +717,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 const url = "http://localhost:1500/api";
 window.onload = ()=>{
     const token = localStorage.getItem("token");
+    // begränsa åtkomligheten till profilen
     if (!token) {
         alert("Logga in f\xf6r att se din profil!");
         window.location.href = "index.html";

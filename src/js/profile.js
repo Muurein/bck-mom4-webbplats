@@ -3,6 +3,7 @@ const url = "http://localhost:1500/api";
 window.onload = () => {
     const token = localStorage.getItem("token");
 
+    // begränsa åtkomligheten till profilen
     if (!token) {
         alert("Logga in för att se din profil!");
         window.location.href = "index.html";
