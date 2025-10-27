@@ -1,0 +1,10 @@
+# Moment 4 - Autentisering och säkerhet, Backend-baserad webbutveckling
+Webbplatsen är en sida om valfakta som användaren bara kommer åt om hen loggar in och får ett JWT-token. Med andra ord måste hen skapa ett konto om hen vill förbi startsidan.
+
+Webbplatsen använder sig av MongoDB för att lagra användarna.
+
+## CRUD
+De CRUD-operationer som förekommer är:
+- GET: hämtar användarens konto och visar deras information i deras profil
+- POST: skapar användare och loggar in dem (här får de ett token)
+
