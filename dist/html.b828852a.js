@@ -779,7 +779,10 @@ function signIn(event) {
     const username = document.getElementById("signinUsername").value;
     const password = document.getElementById("signinPassword").value;
     //är alla fält ifyllda?
-    if (!username || !password) document.getElementById("noAllSignIn").textContent = "Alla f\xe4lt beh\xf6ver vara ifyllda";
+    if (!username || !password) {
+        document.getElementById("noAllSignIn").textContent = "Alla f\xe4lt beh\xf6ver vara ifyllda";
+        return;
+    }
     fetch(url + "/signin", {
         method: "POST",
         headers: {
@@ -790,7 +793,10 @@ function signIn(event) {
             password: password
         })
     }).then((response)=>{
-        if (!response.ok) document.getElementById("wrongSignIn").textContent = "Anv\xe4ndarnamnet eller l\xf6senordet \xe4r fel";
+        if (!response.ok) {
+            document.getElementById("wrongSignIn").textContent = "Anv\xe4ndarnamnet eller l\xf6senordet \xe4r fel";
+            throw new Error("Inloggningen misslyckades");
+        }
         return response.json();
     }).then((data)=>{
         localStorage.setItem("token", data.token);

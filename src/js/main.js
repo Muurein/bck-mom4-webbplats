@@ -84,6 +84,7 @@ function signIn(event) {
     //är alla fält ifyllda?
     if (!username || !password) {
         document.getElementById("noAllSignIn").textContent = "Alla fält behöver vara ifyllda";
+        return;
     }
 
     fetch(url + "/signin", {
@@ -100,6 +101,7 @@ function signIn(event) {
     .then(response => {
         if(!response.ok) {
             document.getElementById("wrongSignIn").textContent =  "Användarnamnet eller lösenordet är fel";
+            throw new Error("Inloggningen misslyckades");
         }
         return response.json();
     })
