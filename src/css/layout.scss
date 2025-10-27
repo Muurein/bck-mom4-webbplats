@@ -1,4 +1,6 @@
 @use "base";
+@use "components";/* funkade inte utan @import */
+@import "components";
 
 * {
     margin: 0;
@@ -7,7 +9,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.1em;
-    line-height: 0.7em;
+    line-height: 1em;
 }
 
 header {
@@ -69,14 +71,15 @@ main p {
 }
 
 h2 {
-    background-color: base.$color-secondary;
     padding: 1em;
-    margin-bottom: -1.3em;
+    margin-bottom: 1.3em;
     text-align: center;
 }
 
+
+
 .sign-in {
-    background-color: base.$color-secondary;
+    border-bottom: 1px solid black;
     padding: 1em;
     text-align: center;
 }
@@ -89,3 +92,36 @@ h2 {
     margin-top: 0.8em;
 }
 
+#sign-up-button, #sign-in-button {
+    @include button;
+}
+
+#sign-up-button:hover, #sign-in-button:hover {
+    background-color: base.$color-primary-darker;
+    cursor: pointer;
+}
+
+form input {
+    border-radius: 20px;
+    border: 1px solid base.$color-primary-darker;
+}
+
+
+//PROFILE
+article {
+    text-align: center;
+}
+
+article h2 {
+    margin-bottom: -10px;;
+}
+
+article p {
+    border: 1px solid base.$color-primary-darker;
+    border-radius: 20px;
+    width: 70%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.8em;
+}

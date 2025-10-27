@@ -1,27 +1,45 @@
 let headerList = {
-    "Accept": "*/*",
-    "Content-Type": "Application/json"
+    "Accept": "http://localhost:1234",
+    "Content-Type": "application/json"
 };
 
-const url = "http://localhost:1500/api";
+const url = "http://localhost:1500/api"; //OM DU ORORAR DIG: ÄNDRA FÖR FAN INGEN URL
 
-window.onload = () => {
-    document.querySelector("sign-up").addEventListener("submit", signUp);
-    document.querySelector("sign-in").addEventListener("submit", signIn);
-    fetchUser();
-}
+// window.onload = () => {
+//     fetchUser();
+// }
+
+//lyssnar efter knapptryck bara om man är på startsidan
+document.getElementById("sign-up-form").addEventListener("submit", (e) => {
+    signUp(e);
+});
+document.getElementById("sign-in-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    signIn(e);
+ });
 
 //registrera ny användare via data från formuläret
-function signIn(event) {
+function signUp(event) { 
     event.preventDefault();
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    const username = document.getElementById("signupUsername").value;
+    const password = document.getElementById("signupPassword").value;
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
 
-    newUser(username, password, firstName, lastName, email)
+    //är alla fält ifyllda?
+    if (!username || !password || !firstName || !lastName || !email) {
+        document.getElementById("signupError").textContent = "Alla fält behöver vara ifyllda";
+        return;
+    }
+
+    //kolla om lösenordet är långt nog
+    if(password.length < 10) {
+        document.getElementById("signupPasswordError").textContent = "Lösenordet behöver vara minst 10 tecken långt"
+    }
+
+    newUser(username, password, firstName, lastName, email);
 }
 
 //skapa ny användare
@@ -35,19 +53,25 @@ async function newUser(username, password, firstName, lastName, email) {
             email,
         }
 
-        const response = await fetch(url, {
+        const response = await fetch(`${url}/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(user),
+            
         });
+            Console.log("USER:", user);
+            console.log("response status i newUser:", response.status);
+
 
         const data = await response.json();
-        if(response.ok) {
-            window.location.href = "profile.html";
-        }
 
+        if(response.ok) {
+            alert("Kontot har skapats. Nu kan du logga in!");
+            console.log(data);
+            window.location.href = "index.html";
+        } 
     } catch (error) {
         console.log("Det uppstod ett fel vid skapande av en ny användare: ", error);
     }
@@ -58,25 +82,37 @@ async function newUser(username, password, firstName, lastName, email) {
 function signIn(event) {
     event.preventDefault();
 
-    fetch("/api/signin", {
+    const username = document.getElementById("signinUsername").value;
+    const password = document.getElementById("signinPassword").value;
+
+    //är alla fält ifyllda?
+    if (!username || !password) {
+        document.getElementById("noAllSignIn").textContent = "Alla fält behöver vara ifyllda";
+    }
+
+    fetch(url + "/signin", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        bosy: JSON.stringify({
-            username: "user",
-            password: "password"
+        body: JSON.stringify({
+            username: username,
+            password: password
         })
+        
     })
     .then(response => {
         if(!response.ok) {
-            throw new Error("Användarnamnet eller lösenordet är fel") //passar det här?
+            console.log("Användarnamnet eller lösenordet är fel");
+            document.getElementById("wrongSignIn").textContent =  "Användarnamnet eller lösenordet är fel";
         }
         return response.json();
     })
     .then(data => {
-        localStorage.setItem("token", data.token);
-        //tar användaren till min profil
+        localStorage.setItem("token", data.token); 
+        alert("Du är nu inloggad!");
+
+        //tar användaren till profilen
         window.location.href = "profile.html";
 
     })
@@ -85,44 +121,13 @@ function signIn(event) {
     });
 }
 
-//skapa en funktion för att se till att infon på min profil är dynamisk
-async function fetchUser() {
-    //hämta user token
+
+
+//så man inte kan öppna profilen utan token
+function authProfile() {
     const token = localStorage.getItem("token");
 
-    //validering av token
-    if(!token) {
-        window.location.href = "index.html"; //omdirigerar om inget token finns men kan behöva ändra till något annat - typ som ett felmeddelande
-        return;
-    }
-
-    try {
-        const response = await fetch("/api/profile", {
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/json"
-            }
-        });
-        
-        //validering
-        if(!response.ok) {
-            throw new Error("Kunde inte hämta användardata");
-        }
-
-        const userData = await response.json();
-        renderProfile(userData);
-    } catch(error) {
-        console.log("Något gick fel vid hämtning av användardata: ", error.message);
+    if (!token) {
+        alert("Logga in för att se din profil!");
     }
 }
-
-function renderProfile(user) {
-    document.getElementById("usernameProfile").textContent = user.username;
-    document.getElementById("passwordProfile").textContent = user.password;
-    document.getElementById("firstNameProfile").textContent = user.firstName;
-    document.getElementById("lastNameProfile").textContent = user.lastName;
-    document.getElementById("emailProfile").textContent = user.email;
-}
-
-

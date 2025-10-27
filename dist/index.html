@@ -36,43 +36,46 @@
         
         <div class="sign-in">
             <h2>Logga in</h2>
-            <form action="/signin">
+            <form id="sign-in-form">
                 <!--användarnamn-->
                 <div>
                     <label for="username">Användarnamn:</label>
                     <br>
-                    <input type="text" id="username" name="username">
+                    <input type="text" id="signinUsername" name="username">
                 </div>
 
                 <!--lösenord-->
                 <div>
                     <label for="password">Lösenord:</label>
                     <br>
-                    <input type="text" id="password" name="password">
+                    <input type="text" id="signinPassword" name="password">
                 </div>
+
+                <p id="wrongSignIn"></p>
+                <p id="noAllSignIn"></p>
 
                 <!--logga in-knapp-->
                 <div>
-                    <input class="sign-in" type="submit">
+                    <input id="sign-in-button" type="submit" value="Logga in">
                 </div>
             </form>
         </div>
 
         <div class="sign-in">
             <h2>Skapa konto</h2>
-            <form>
+            <form id="sign-up-form">
                 <!--användarnamn-->
                 <div>
                     <label for="username">Användarnamn:</label>
                     <br>
-                    <input type="text" id="username" name="username">
+                    <input type="text" id="signupUsername" name="username">
                 </div>
 
                 <!--lösenord-->
                 <div>
                     <label for="password">Lösenord:</label>
                     <br>
-                    <input type="text" id="password" name="password">
+                    <input type="text" id="signupPassword" name="password">
                 </div>
 
                 <!--förnamn-->
@@ -98,16 +101,17 @@
 
                 <!--skapa konto-knapp-->
                 <div>
-                    <input class="sign-up" type="submit">
+                    <input id="sign-up-button" type="submit" value="Skapa konto">
                 </div>
+
+                <p id="signupError"></p>
+                <p id="signupPasswordError"></p>
             </form>
         </div>
 
     </main>
 
-    <footer>
-        <p>Amanda Thim - amth2302</p>
-        <p>Moment 4 - Autentisering och säkerhet</p>
-    </footer>
+    <script>
+</script>
 
 </body></html>

@@ -207,7 +207,7 @@
       });
     }
   }
-})({"93v64":[function(require,module,exports,__globalThis) {
+})({"dgZCZ":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -215,7 +215,7 @@ var HMR_SERVER_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
-module.bundle.HMR_BUNDLE_ID = "f3e508fdb828852a";
+module.bundle.HMR_BUNDLE_ID = "0f552efc7a5e2684";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_SERVER_PORT, HMR_ENV_HASH, HMR_SECURE, HMR_USE_SSE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -713,106 +713,45 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     }
 }
 
-},{}],"lhpGb":[function(require,module,exports,__globalThis) {
-let headerList = {
-    "Accept": "http://localhost:1234",
-    "Content-Type": "application/json"
-};
-const url = "http://localhost:1500/api"; //OM DU ORORAR DIG: ÄNDRA FÖR FAN INGEN URL
-// window.onload = () => {
-//     fetchUser();
-// }
-//lyssnar efter knapptryck bara om man är på startsidan
-document.getElementById("sign-up-form").addEventListener("submit", (e)=>{
-    signUp(e);
-});
-document.getElementById("sign-in-form").addEventListener("submit", (e)=>{
-    e.preventDefault();
-    signIn(e);
-});
-//registrera ny användare via data från formuläret
-function signUp(event) {
-    event.preventDefault();
-    const username = document.getElementById("signupUsername").value;
-    const password = document.getElementById("signupPassword").value;
-    const firstName = document.getElementById("firstName").value;
-    const lastName = document.getElementById("lastName").value;
-    const email = document.getElementById("email").value;
-    //är alla fält ifyllda?
-    if (!username || !password || !firstName || !lastName || !email) {
-        document.getElementById("signupError").textContent = "Alla f\xe4lt beh\xf6ver vara ifyllda";
-        return;
-    }
-    //kolla om lösenordet är långt nog
-    if (password.length < 10) document.getElementById("signupPasswordError").textContent = "L\xf6senordet beh\xf6ver vara minst 10 tecken l\xe5ngt";
-    newUser(username, password, firstName, lastName, email);
-}
-//skapa ny användare
-async function newUser(username, password, firstName, lastName, email) {
-    try {
-        let user = {
-            username,
-            password,
-            firstName,
-            lastName,
-            email
-        };
-        const response = await fetch(`${url}/register`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(user)
-        });
-        Console.log("USER:", user);
-        console.log("response status i newUser:", response.status);
-        const data = await response.json();
-        if (response.ok) {
-            alert("Kontot har skapats. Nu kan du logga in!");
-            console.log(data);
-            window.location.href = "index.html";
-        }
-    } catch (error) {
-        console.log("Det uppstod ett fel vid skapande av en ny anv\xe4ndare: ", error);
-    }
-}
-//logga in användare
-function signIn(event) {
-    event.preventDefault();
-    const username = document.getElementById("signinUsername").value;
-    const password = document.getElementById("signinPassword").value;
-    //är alla fält ifyllda?
-    if (!username || !password) document.getElementById("noAllSignIn").textContent = "Alla f\xe4lt beh\xf6ver vara ifyllda";
-    fetch(url + "/signin", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            username: username,
-            password: password
-        })
-    }).then((response)=>{
-        if (!response.ok) {
-            console.log("Anv\xe4ndarnamnet eller l\xf6senordet \xe4r fel");
-            document.getElementById("wrongSignIn").textContent = "Anv\xe4ndarnamnet eller l\xf6senordet \xe4r fel";
-        }
-        return response.json();
-    }).then((data)=>{
-        localStorage.setItem("token", data.token);
-        alert("Du \xe4r nu inloggad!");
-        //tar användaren till profilen
-        window.location.href = "profile.html";
-    }).catch((error)=>{
-        console.error("Inloggningen misslyckades: ", error.message);
-    });
-}
-//så man inte kan öppna profilen utan token
-function authProfile() {
+},{}],"jvQhx":[function(require,module,exports,__globalThis) {
+const url = "http://localhost:1500/api";
+window.onload = ()=>{
     const token = localStorage.getItem("token");
-    if (!token) alert("Logga in f\xf6r att se din profil!");
+    if (!token) {
+        alert("Logga in f\xf6r att se din profil!");
+        window.location.href = "index.html";
+    } else fetchUser();
+};
+//skapa en funktion för att se till att infon på min profil är dynamisk
+async function fetchUser() {
+    const token = localStorage.getItem("token");
+    try {
+        const response = await fetch(`${url}/profile`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        });
+        //validering
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error("Kunde inte h\xe4mta anv\xe4ndardata");
+        }
+        const userData = await response.json();
+        renderProfile(userData);
+    } catch (error) {
+        console.log("N\xe5got gick fel vid h\xe4mtning av anv\xe4ndardata: ", error.message);
+    }
+}
+//bygg upp profil sidan med just den inloggade användarens info
+function renderProfile(user) {
+    document.getElementById("usernameProfile").textContent = user.username;
+    document.getElementById("firstNameProfile").textContent = user.firstName;
+    document.getElementById("lastNameProfile").textContent = user.lastName;
+    document.getElementById("emailProfile").textContent = user.email;
 }
 
-},{}]},["93v64","lhpGb"], "lhpGb", "parcelRequire9071", {})
+},{}]},["dgZCZ","jvQhx"], "jvQhx", "parcelRequire9071", {})
 
-//# sourceMappingURL=html.b828852a.js.map
+//# sourceMappingURL=profile.7a5e2684.js.map

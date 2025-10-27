@@ -5,7 +5,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.1em;
-  line-height: .7em;
+  line-height: 1em;
 }
 
 header {
@@ -64,14 +64,13 @@ main p {
 
 h2 {
   text-align: center;
-  background-color: #fffacd;
-  margin-bottom: -1.3em;
+  margin-bottom: 1.3em;
   padding: 1em;
 }
 
 .sign-in {
   text-align: center;
-  background-color: #fffacd;
+  border-bottom: 1px solid #000;
   padding: 1em;
 }
 
@@ -81,5 +80,41 @@ h2 {
 
 .sign-in input {
   margin-top: .8em;
+}
+
+#sign-up-button, #sign-in-button {
+  color: #fff;
+  background-color: #5a6bcd;
+  border: none;
+  border-radius: 20px;
+  padding: .8em;
+}
+
+#sign-up-button:hover, #sign-in-button:hover {
+  cursor: pointer;
+  background-color: #212c6d;
+}
+
+form input {
+  border: 1px solid #212c6d;
+  border-radius: 20px;
+}
+
+article {
+  text-align: center;
+}
+
+article h2 {
+  margin-bottom: -10px;
+}
+
+article p {
+  border: 1px solid #212c6d;
+  border-radius: 20px;
+  width: 70%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: .8em;
 }
 /*# sourceMappingURL=html.8c1c22dc.css.map */
